@@ -8,9 +8,9 @@ class City():
     ''' Creating a class of City with name, lat, and lon as attributes '''
 
     def __init__(self, name, lat, lon):
-            self.name = name
-            self.lat = lat
-            self.lon = lon
+        self.name = name
+        self.lat = lat
+        self.lon = lon
 
 
 # We have a collection of US cities with population over 750,000 stored in the
@@ -34,8 +34,11 @@ def cityreader(cities=[]):
         # `cities` list
 
     with open('cities.csv', newline='') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',')
+        # No need to pass in the delimiter
+        reader = csv.reader(csvfile)
+        # Skipping over the headers
         next(reader, None)
+        # Looping through the CSV and appending the data to my cities list
         for row in reader:
             cities.append(
                 City(name=str(row[0]), lat=float(row[3]), lon=float(row[4])))
@@ -82,10 +85,7 @@ for c in cities:
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
     # within will hold the cities that fall within the specified region
-    within = []
 
     # TODO Ensure that the lat and lon valuse are all floats
     # Go through each city and check to see if it falls within
     # the specified coordinates.
-
-    return within
